@@ -11,20 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install xvfb
-        run: sudo apt-get -y install xvfb
-      - name: Install openbox
-        run: sudo apt-get -y install openbox
-      - name: Install scrot
-        run: sudo apt-get -y install scrot
-      - name: Start xvfb
-        run: Xvfb :99 &
-      - name: Start openbox
-        run: DISPLAY=:99 openbox &
-      - name: Wait
-        run: sleep 3
-      - name: Screenshot
-        run: DISPLAY=:99 scrot output.png
+      - name: Go
+        run: .github/workflows/run-xvfb.sh
       - name: Upload screenshots
         uses: actions/upload-artifact@v2
         if: ${{ always() }}
