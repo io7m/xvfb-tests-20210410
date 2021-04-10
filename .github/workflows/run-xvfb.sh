@@ -1,6 +1,6 @@
 #!/bin/bash -ex
 
-sudo apt-get -y install xvfb openbox scrot feh
+sudo apt-get -y install xvfb openbox scrot feh xterm
 Xvfb :99 &
 export DISPLAY=:99
 openbox &
