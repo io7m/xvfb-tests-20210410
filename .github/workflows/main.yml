@@ -18,20 +18,16 @@ jobs:
       - name: Install scrot
         run: sudo apt-get -y install scrot
       - name: Start xvfb
-        run: xvfb-run -e errors.txt openbox &
+        run: Xvfb :99 &
+      - name: Start openbox
+        run: DISPLAY=:99 openbox &
       - name: Wait
-        run: sleep 5
+        run: sleep 3
       - name: Screenshot
-        run: scrot output.png
+        run: DISPLAY=:99 scrot output.png
       - name: Upload screenshots
         uses: actions/upload-artifact@v2
         if: ${{ always() }}
         with:
           name: image
           path: output.png
-      - name: Upload logs
-        uses: actions/upload-artifact@v2
-        if: ${{ always() }}
-        with:
-          name: errors
-          path: errors.txt
