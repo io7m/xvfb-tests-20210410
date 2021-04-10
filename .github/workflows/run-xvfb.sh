@@ -12,4 +12,4 @@ feh --bg-tile .github/workflows/wallpaper.png
 
 sleep 3
 
-scrot output.png
+scrot output.jpg
